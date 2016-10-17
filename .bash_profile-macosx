@@ -19,8 +19,8 @@ if [ -d /usr/local/sbin ]; then
     export PATH=/usr/local/sbin:$PATH
 fi
 # Composer / Laravel, Homestead accessability
-if [ -d ~/.composer/vendor/bin/ ]; then
-    export PATH=~/.composer/vendor/bin:$PATH
+if [ -d $my_dir/.composer/vendor/bin/ ]; then
+    export PATH="$my_dir/.composer/vendor/bin:$PATH"
 fi
 
 # Prompt customization

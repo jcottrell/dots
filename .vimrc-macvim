@@ -172,8 +172,11 @@ if has("autocmd")
 	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	" js
 	autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
+    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 	" css
 	autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+    autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+    autocmd FileType scss setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 	" html
 	autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 

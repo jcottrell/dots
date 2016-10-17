@@ -120,6 +120,8 @@ set listchars=tab:▸\ ,eol:¬
 " Delete whitespace at the end of every line before saving according to a whitelist
 if has("autocmd")
 	autocmd BufWritePre *.txt,*.php,*.rb,*.htmlrb,*.html,*.py,*.js :call <SID>StripTrailingWhitespaces()
+    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+    autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 end
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
