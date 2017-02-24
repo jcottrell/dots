@@ -50,18 +50,20 @@ set guifont=Menlo:h13
 syntax on
 " Syntastic checker
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 " vim-phpcs (github.com/bpearson/vim-phpcs) based on
 "   (github.com/squizlabs/PHP_CodeSniffer)
+let Vimphpcs_Standard='PSR2'
 nnoremap <leader>cs :CodeSniff<CR>
 " vim-php-cs-fixer (github.com/stephpy/vim-php-cs-fixer) based on
 "   (github.com/FriendsOfPHP/PHP-CS-Fixer)
-let g:php_cs_fixer_level = "psr2"              " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-let g:php_cs_fixer_enable_default_mapping = 0     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
+"let g:php_cs_fixer_level = "PSR2"              " which level ?
+"let g:php_cs_fixer_config = "default"             " configuration
+"let g:php_cs_fixer_php_path = "php"               " Path to PHP
+"let g:php_cs_fixer_enable_default_mapping = 0     " Enable the mapping by default (<leader>pcd)
+"let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+"let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+"nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
 
 "Tab stuff
 set tabstop=4
@@ -118,6 +120,7 @@ set linespace=3
 " set textwidth=79
 set wrap linebreak nolist
 set formatoptions=qrn1
+set showbreak=↪
 
 " Set the $ character to mark the end of your change (in normal mode do ciw while on "somewords" and get "|someword$" where | is the cursor and $ is the end of the section you're changing)
 set cpoptions+=$
