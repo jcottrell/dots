@@ -92,7 +92,6 @@ set statusline+=\ %{FileSize()}	" file size, see function below
 set statusline+=\ %{fugitive#statusline()}	" git repository status through fugitive plugin
 set statusline+=\ (%n)			" buffer number
 set statusline+=\ %y			" filetype
-set statusline+=\ %{ObsessionStatus()} "vim-obsession status - running or paused
 " set statusline+=\ %{PartialPath()}
 " set statusline+=\ %{fnamemodify(":t",":p:h")}
 set statusline+=%=				" --right align--
