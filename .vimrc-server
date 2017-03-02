@@ -70,7 +70,6 @@ set statusline+=\ %m			" modified - if current buffer has been modified
 set statusline+=\ %{FileSize()}	" file size, see function below
 set statusline+=\ (%n)			" buffer number
 set statusline+=\ %y			" filetype
-set statusline+=\ %{ObsessionStatus()} "vim-obsession status - running or paused
 set statusline+=%=				" --right align--
 set statusline+=%c%V			" cursor column, virtual column number
 set statusline+=\|%l,%L			" cursor line, total lines
