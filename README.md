@@ -10,7 +10,10 @@
     sudo update-alternatives –config editor  
 
 ## Sudo without password
-sudo visudo
+1. `sudo visudo`
+2. Go to the end of the file
+3. Add `username ALL=(ALL) NOPASSWD: ALL` replace `username` with your username
 
-#At the end of the file add (replacing username with your username)
-username ALL=(ALL) NOPASSWD: ALL
+## Add authorized key to server
+1. From home machine's terminal
+2. `ssh-copy-id -i ./ssh/id_rsa.pub loginName@server.path`
