@@ -40,6 +40,7 @@ if [ "$1" = "--server" ] || [ "$1" = "--mac" ]; then
     if [ $1 = "--server" ]; then
         addLink ".bashrc-server" ".bashrc"
         addLink ".vimrc-server" ".vimrc"
+        addLink ".bash_aliases"
     else
     # else connect up .bash_profile-maxosx and .vimrc-macvim
         addLink ".bash_profile-macosx" ".bash_profile"
