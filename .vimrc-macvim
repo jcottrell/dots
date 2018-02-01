@@ -36,9 +36,10 @@ set ruler
 "Switch between buffers without saving
 set hidden
 
-"Set the color scheme. Change this to your preference. 
+"Set the color scheme. Change this to your preference.
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
-colorscheme vividchalk " http://www.vi-improved.org/color_sampler_pack/ for colors; also good: ekvoli, vividchalk but mostly inkpot
+" http://www.vi-improved.org/color_sampler_pack/ for colors; also good: ekvoli, vividchalk but mostly inkpot
+colorscheme vividchalk
 
 "Set font type and size. Depends on the resolution. Larger screens, prefer h15
 " set guifont=Courier:h15
@@ -51,6 +52,8 @@ syntax on
 " Syntastic checker
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+" from using eslint for js, es6, react, jsx. Instructions at https://github.com/jaxbot/syntastic-react
+let g:syntastic_javascript_checkers = ['eslint']
 " vim-phpcs (github.com/bpearson/vim-phpcs) based on
 "   (github.com/squizlabs/PHP_CodeSniffer)
 let Vimphpcs_Standard='PSR2'
@@ -121,7 +124,8 @@ set wrap linebreak nolist
 set formatoptions=qrn1
 set showbreak=↪
 
-" Set the $ character to mark the end of your change (in normal mode do ciw while on "somewords" and get "|someword$" where | is the cursor and $ is the end of the section you're changing)
+" Set the $ character to mark the end of your change (in normal mode do ciw while on "somewords" and get "|someword$
+" where | is the cursor and $ is the end of the section you're changing)
 set cpoptions+=$
 
 "Set incremental searching"
@@ -169,18 +173,22 @@ if has("autocmd")
 	" more auto-completion, by language
 	" http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor
 	" Ctrl+Shift+c, Ctrl+Shift+o (other commands are in the article)
-	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	" js
+	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
     autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+	autocmd FileType javascript call clearmatches() | call matchadd('ErrorMsg', '\s\+$', 100) | call matchadd('ErrorMsg', '\%>80v.\+', 100)
 	" css
+	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
     autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
     autocmd FileType scss setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 	" html
+	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+    autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+    " php
+	autocmd FileType php call clearmatches() | call matchadd('ErrorMsg', '\s\+$', 100) | call matchadd('ErrorMsg', '\%>120v.\+', 100)
 
 end
 function! <SID>StripTrailingWhitespaces()
@@ -195,8 +203,14 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
+"vim-javascript syntax highlighting and "improved" indentation - config
+let g:javascript_plugin_jsdoc = 1
+
 "Shortcut to fold tags with leader (usually \) + ft
 nnoremap <leader>ft Vatzf
+
+"Add command to format file as JSON
+com Json %!python -m json.tool
 
 " Create dictionary for custom expansions
 " set dictionary+=/Users/jeff_way/.vim/dict.txt
@@ -214,8 +228,11 @@ nnoremap <leader>f :40Vex<cr>
 " File searcher - ctrlp
 let g:ctrlp_map = '<leader>p'
 
-"Split windows below the current window.
-set splitbelow              
+"Split windows below the current window (:sp)
+set splitbelow
+
+"Split windows below the current window (:vs)
+set splitright
 
 " session settings
 set sessionoptions=resize,winpos,winsize,buffers,tabpages,folds,curdir,help
@@ -227,7 +244,7 @@ nmap <leader>ev :tabedit $MYVIMRC<cr>
 nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_us
 
-"Map code completion to \ + tab
+"Map code completion to , + tab
 imap <leader><tab> <C-x><C-o>
 
 " More useful command-line completion
@@ -239,9 +256,6 @@ set wildmode=list:longest
 " jshint and csslint run with the lint.vim plugin but get annoying so we can
 " disable them here
 let disable_lint=1
-
-"Macro to remove hosts junk added automatically
-let @g = 'd/^#:noh:set filetype=conf'
 
 "http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 set completeopt=longest,menuone

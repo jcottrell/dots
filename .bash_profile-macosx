@@ -22,6 +22,12 @@ fi
 if [ -d $my_dir/.composer/vendor/bin/ ]; then
     export PATH="$my_dir/.composer/vendor/bin:$PATH"
 fi
+if [ -d $my_dir/.nvm ]; then
+    export NVM_DIR=$my_dir/.nvm
+    source $(brew --prefix nvm)/nvm.sh
+fi
+# Is the following needed for the php interactive shell `php -a`?
+#export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
 # Prompt customization
 if [ -f ~/.bash_prompt_colors ]; then
@@ -45,7 +51,7 @@ print_before_the_prompt() {
 }
 if [ "$my_colors" = yes ]; then
 	PROMPT_COMMAND=print_before_the_prompt
-	PS1='# '
+	PS1="λ > "
 fi
 
 # This is to use MacVim instead of command line VIM
@@ -54,7 +60,7 @@ alias g='gvim --remote-silent'
 # Easily hide and show dot files in Finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES;killall Finder /System/Library/CoreServices/Finder.app;echo "Now showing hidden files.\n"'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO;killall Finder /System/Library/CoreServices/Finder.app;echo "Now re-hiding hidden files.\n"'
-alias tellme='say Command completed'
+alias tellme='say Command completed || say Command failed'
 # Some terminal shotcuts
 alias ll='ls -alh'
 alias la='ls -A'
@@ -62,10 +68,11 @@ alias l='ls -CF'
 
 # git aliases
 alias gs='git status'
+alias gd='git diff'
+alias gc='git commit -m '
 alias gb='git branch -vv'
 alias gr='git remote -v'
 alias ga='git add --all'
-alias gc='git commit -m '
 
 # Make the command line a vi tool
 # set -o vi
