@@ -12,6 +12,7 @@
 	interactive = auto
 [core]
 	filemode = false
+    editor = 'vim'
 [alias]
 	lc = log ORIG_HEAD.. --stat --no-merges
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'

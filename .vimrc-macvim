@@ -36,6 +36,8 @@ set ruler
 "Switch between buffers without saving
 set hidden
 
+set termguicolors
+
 "Set the color scheme. Change this to your preference.
 "Here's 100 to choose from: http://www.vim.org/scripts/script.php?script_id=625
 " http://www.vi-improved.org/color_sampler_pack/ for colors; also good: ekvoli, vividchalk but mostly inkpot
@@ -43,7 +45,7 @@ colorscheme vividchalk
 
 "Set font type and size. Depends on the resolution. Larger screens, prefer h15
 " set guifont=Courier:h15
-set guifont=Menlo:h13
+set guifont=Menlo:h15
 " set guifont=Inconsolata:h17 " http://code.google.com/webfonts/specimen/Inconsolata
 " set guifont=Cosmic\ Sans\ Neue\ Mono:h15 " https://github.com/belluzj/cosmic-sans-neue
 
@@ -60,13 +62,14 @@ let Vimphpcs_Standard='PSR2'
 nnoremap <leader>cs :CodeSniff<CR>
 " vim-php-cs-fixer (github.com/stephpy/vim-php-cs-fixer) based on
 "   (github.com/FriendsOfPHP/PHP-CS-Fixer)
-"let g:php_cs_fixer_level = "PSR2"              " which level ?
-"let g:php_cs_fixer_config = "default"             " configuration
-"let g:php_cs_fixer_php_path = "php"               " Path to PHP
-"let g:php_cs_fixer_enable_default_mapping = 0     " Enable the mapping by default (<leader>pcd)
-"let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-"let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-"nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
+" If you use php-cs-fixer version 2.x
+let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
+
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_enable_default_mapping = 0     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 1                    " Return the output of command if 1, else an inline information.
+nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
 
 "Tab stuff
 set tabstop=4
@@ -208,6 +211,14 @@ let g:javascript_plugin_jsdoc = 1
 
 "Shortcut to fold tags with leader (usually \) + ft
 nnoremap <leader>ft Vatzf
+
+" PHP Folding plugin - https://github.com/rayburgemeestre/phpfolding.vim
+map <F6> <Esc>:EnableFastPHPFolds<Cr>
+map <F7> <Esc>:EnablePHPFolds<Cr>
+map <F8> <Esc>:DisablePHPFolds<Cr>
+
+" UltiSnips and vim-snippets
+let g:snips_author='jcottrell'
 
 "Add command to format file as JSON
 com Json %!python -m json.tool

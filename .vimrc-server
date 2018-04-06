@@ -13,6 +13,7 @@ let mapleader=","
 
 "Don't worry about the .swp and .swo swap files
 set nobackup
+set nowritebackup
 set noswapfile
 
 "Enable filetypes
