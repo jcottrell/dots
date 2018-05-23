@@ -6,10 +6,12 @@
 [apply]
 	whitespace = nowarn
 [color]
-	status = auto
-	branch = auto
-	diff = auto
-	interactive = auto
+	status = always
+	branch = always
+	diff = always
+	interactive = always
+[diff]
+    colorMoved = dimmed_zebra
 [core]
 	filemode = false
     editor = 'vim'

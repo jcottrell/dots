@@ -238,6 +238,10 @@ nnoremap <leader>f :40Vex<cr>
 
 " File searcher - ctrlp
 let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules|DS_Store|git'
+let g:ctrlp_by_filename = 1
 
 "Split windows below the current window (:sp)
 set splitbelow
