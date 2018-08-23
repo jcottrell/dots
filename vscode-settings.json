@@ -18,12 +18,9 @@
   "zenMode.hideTabs": false,
   "terminal.external.osxExec": "iTerm.app",
   "breadcrumbs.enabled": true,
-  "php.executablePath": "/usr/local/bin/php",
   "phpcs.errorSeverity": 1,
-  "phpcs.executablePath": "~/bin/phpcs",
   "phpcs.standard": "psr2",
   "phpcs.warningSeverity": 1,
-  "git.path": "/usr/local/bin/git",
   "vim.leader": ",",
   "vim.easymotion": false,
   "vim.sneak": false,
@@ -31,12 +28,6 @@
   "vim.hlsearch": true,
   "vim.incsearch": true,
   "vim.statusBarColorControl": true,
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [":"],
-      "commands": ["workbench.action.showCommands"]
-    }
-  ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": [">", ">"],
