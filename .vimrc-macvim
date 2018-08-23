@@ -80,8 +80,10 @@ set expandtab
 "Show command in bottom right portion of the screen
 set showcmd
 
-"Show lines numbers
+"Show current line number
 set number
+"Show relative line numbers
+set rnu
 
 "Prefer relative line numbering?
 "set relativenumber"

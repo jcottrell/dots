@@ -1,0 +1,53 @@
+{
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "relative",
+  "editor.renderLineHighlight": "gutter",
+  "workbench.editor.closeOnFileDelete": false,
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  },
+  "window.newWindowDimensions": "maximized",
+  "window.restoreWindows": "none",
+  "zenMode.fullScreen": false,
+  "zenMode.hideActivityBar": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.hideTabs": false,
+  "terminal.external.osxExec": "iTerm.app",
+  "breadcrumbs.enabled": true,
+  "php.executablePath": "/usr/local/bin/php",
+  "phpcs.errorSeverity": 1,
+  "phpcs.executablePath": "~/bin/phpcs",
+  "phpcs.standard": "psr2",
+  "phpcs.warningSeverity": 1,
+  "git.path": "/usr/local/bin/git",
+  "vim.leader": ",",
+  "vim.easymotion": false,
+  "vim.sneak": false,
+  "vim.surround": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.statusBarColorControl": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [":"],
+      "commands": ["workbench.action.showCommands"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [">", ">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<", "<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "[php]": {}
+}
