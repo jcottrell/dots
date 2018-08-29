@@ -138,7 +138,7 @@ nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_us
 
 "Automatically change current directory to that of the file in the buffer
-autocmd BufEnter * cd %:p:h
+autocmd BufEnter * if expand('%:p') !~ '://' | :lchdir %:p:h | endif
 
 "Map code completion to \ + tab
 imap <leader><tab> <C-x><C-o>

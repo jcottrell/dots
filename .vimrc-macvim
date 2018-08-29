@@ -178,7 +178,7 @@ if has("autocmd")
 	" Try wrapping text at 72 characters for git commit messages (http://web-design-weekly.com/2013/09/01/a-better-git-commit/)
 	autocmd Filetype gitcommit set spell textwidth=72
 	"Automatically change current directory to that of the file in the buffer
-	autocmd BufEnter * cd %:p:h
+    autocmd BufEnter * if expand('%:p') !~ '://' | :lchdir %:p:h | endif
 	" more auto-completion, by language
 	" http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor
 	" Ctrl+Shift+c, Ctrl+Shift+o (other commands are in the article)
