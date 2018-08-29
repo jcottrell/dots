@@ -33,20 +33,6 @@ set guifont=Menlo:h13
 
 " Syntax highlighting
 syntax on
-" Syntastic checker
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-" vim-phpcs (github.com/bpearson/vim-phpcs) based on
-"   (github.com/squizlabs/PHP_CodeSniffer)
-nnoremap <leader>cs :CodeSniff<CR>
-" vim-php-cs-fixer (github.com/stephpy/vim-php-cs-fixer) based on
-"   (github.com/FriendsOfPHP/PHP-CS-Fixer)
-let g:php_cs_fixer_level = "psr2"              " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-let g:php_cs_fixer_enable_default_mapping = 0     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
 
 "Tab stuff
 set tabstop=4

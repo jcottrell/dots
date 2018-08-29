@@ -54,6 +54,9 @@ if [ "$my_colors" = yes ]; then
 	PS1="λ > "
 fi
 
+export FZF_DEFAULT_COMMAND='ag --ignore *.pyc -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Easily hide and show dot files in Finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES;killall Finder /System/Library/CoreServices/Finder.app;echo "Now showing hidden files.\n"'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO;killall Finder /System/Library/CoreServices/Finder.app;echo "Now re-hiding hidden files.\n"'

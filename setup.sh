@@ -45,6 +45,8 @@ if [ "$1" = "--server" ] || [ "$1" = "--mac" ]; then
     # else connect up .bash_profile-maxosx and .vimrc-macvim
         addLink ".bash_profile-macosx" ".bash_profile"
         addLink ".vimrc-macvim" ".vimrc"
+        #eslint does not follow links
+        cp "$dotsDir/.eslint.json" "$HOME/.eslint.json"
     fi
     addLink ".bash_prompt_colors"
     addLink ".ctags"

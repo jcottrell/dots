@@ -5,11 +5,6 @@
   "editor.renderLineHighlight": "gutter",
   "workbench.editor.closeOnFileDelete": false,
   "workbench.startupEditor": "none",
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#005f5f",
-    "statusBar.noFolderBackground": "#005f5f",
-    "statusBar.debuggingBackground": "#005f5f"
-  },
   "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "none",
   "zenMode.fullScreen": false,
@@ -18,11 +13,14 @@
   "zenMode.hideTabs": false,
   "terminal.external.osxExec": "iTerm.app",
   "breadcrumbs.enabled": true,
+  "php.suggest.basic": false,
   "phpcs.errorSeverity": 1,
   "phpcs.standard": "psr2",
   "phpcs.warningSeverity": 1,
+  "php-cs-fixer.onsave": true,
   "vim.leader": ",",
   "vim.easymotion": false,
+  "vim.foldfix": true,
   "vim.sneak": false,
   "vim.surround": true,
   "vim.hlsearch": true,
@@ -40,5 +38,10 @@
   ],
   "prettier.semi": false,
   "prettier.singleQuote": true,
-  "[php]": {}
+  "[php]": {},
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  }
 }

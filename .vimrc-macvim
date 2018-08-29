@@ -51,11 +51,12 @@ set guifont=Menlo:h15
 
 " Syntax highlighting
 syntax on
-" Syntastic checker
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
-" from using eslint for js, es6, react, jsx. Instructions at https://github.com/jaxbot/syntastic-react
-let g:syntastic_javascript_checkers = ['eslint']
+" ALE linter - see ftplugin directory too (:ALEInfo is extremely useful!)
+let g:ale_linters_explicit = 1
+let g:ale_php_phpcs_standard = 'PSR2'
+" ALE linter - for javascript eslint needed to `npm install -g eslint
+" eslint-plugin-react` then run `eslint -init` to create an ~/.eslintrc.json
+
 " vim-phpcs (github.com/bpearson/vim-phpcs) based on
 "   (github.com/squizlabs/PHP_CodeSniffer)
 let Vimphpcs_Standard='PSR2'
@@ -80,10 +81,8 @@ set expandtab
 "Show command in bottom right portion of the screen
 set showcmd
 
-"Show current line number
+"Show line numbers
 set number
-"Show relative line numbers
-set rnu
 
 "Prefer relative line numbering?
 "set relativenumber"
@@ -139,6 +138,17 @@ set incsearch
 "Highlight searching
 set hlsearch
 
+" Ctrlp.vim - File searcher
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules|DS_Store|git'
+
+" ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
+" " map <Leader>a :Ack<Space>
+
 " case insensitive search
 set ignorecase
 set smartcase
@@ -161,12 +171,6 @@ set listchars=tab:▸\ ,eol:¬
 
 " Set the language for spell check
 set spelllang=en_us
-
-" Ctrlp.vim
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-" Gundo sjl.bitbucket.org/gundo.vim/
-nnoremap <F5> :GundoToggle<CR>
 
 if has("autocmd")
 	" Delete whitespace at the end of every line before saving according to a whitelist
@@ -237,13 +241,6 @@ let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 80
 nnoremap <leader>f :40Vex<cr>
-
-" File searcher - ctrlp
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = 'node_modules|DS_Store|git'
-let g:ctrlp_by_filename = 1
 
 "Split windows below the current window (:sp)
 set splitbelow
