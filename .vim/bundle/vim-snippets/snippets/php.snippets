@@ -46,7 +46,7 @@ snippet f
 	}
 # method
 snippet m
-	${1:protected} function ${2:foo}(${3:$bar})
+	${1:protected} function ${2:foo}()
 	{
 		${0:${VISUAL}}
 	}
@@ -200,17 +200,6 @@ snippet doc_f
 	${1}function ${2}(${3})
 	{${0}
 	}
-# Method with docs
-snippet doc_m
-	/**
-	 * ${1:functionName}
-	 *
-	 * @return ${2:void}
-	 */
-	${3:protected} function ${4:foo}(${5:$$bar})
-	{
-		${0:${VISUAL}}
-	}
 # Header
 snippet doc_h
 	/**
@@ -309,9 +298,9 @@ snippet ifil "<?php if (condition): ?> ... <?php endif; ?>"
 	<?php endif; ?>
 snippet ife "if (cond) { ... } else { ... }"
 	if (${1}) {
-		${2:${VISUAL}}
+		${0:${VISUAL}}
 	} else {
-		${0}
+		${2}
 	}
 snippet ifeil "<?php if (condition): ?> ... <?php else: ?> ... <?php endif; ?>"
 	<?php if (${1}): ?>
@@ -628,7 +617,7 @@ snippet ascha "$this->assertClassHasAttribute($name, Example::class)"
 	$this->assertClassHasAttribute(${1:$attributeName}, ${2:Example}::class);
 snippet asi "$this->assertInstanceOf(Example::class, $actual)"
 	$this->assertInstanceOf(${1:Example}::class, ${2:$actual});
-snippet ast "$this->assertInternalType('string', $actual)"
+snippet asit "$this->assertInternalType('string', $actual)"
 	$this->assertInternalType(${1:'string'}, ${2:actual});
 snippet asco "$this->assertCount($count, $haystack)"
 	$this->assertCount(${1:$expectedCount}, ${2:$haystack});
