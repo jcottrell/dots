@@ -45,14 +45,14 @@ colorscheme vividchalk
 
 "Set font type and size. Depends on the resolution. Larger screens, prefer h15
 " set guifont=Courier:h15
-set guifont=Menlo:h15
+" set guifont=Menlo:h15
 " set guifont=Inconsolata:h17 " http://code.google.com/webfonts/specimen/Inconsolata
 " set guifont=Cosmic\ Sans\ Neue\ Mono:h15 " https://github.com/belluzj/cosmic-sans-neue
+set guifont=Fira\ Code:h15
 
 " Syntax highlighting
 syntax on
 " ALE linter - see ftplugin directory too (:ALEInfo is extremely useful!)
-let g:ale_linters_explicit = 1
 let g:ale_php_phpcs_standard = 'PSR2'
 " ALE linter - for javascript eslint needed to `npm install -g eslint
 " eslint-plugin-react` then run `eslint -init` to create an ~/.eslintrc.json
@@ -182,23 +182,27 @@ if has("autocmd")
 	" more auto-completion, by language
 	" http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor
 	" Ctrl+Shift+c, Ctrl+Shift+o (other commands are in the article)
+    highlight ColorColumn ctermbg=grey guibg=#cb5de1
 	" js
-	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-	autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
-    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-	autocmd FileType javascript call clearmatches() | call matchadd('ErrorMsg', '\s\+$', 100) | call matchadd('ErrorMsg', '\%>80v.\+', 100)
+    autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
+    autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+	autocmd FileType javascript call clearmatches() | call matchadd('ColorColumn', '\s\+$', 100) | call matchadd('ColorColumn', '\%81v', 100)
+    " vue
+    autocmd FileType vue set formatprg=prettier-eslint\ --stdin
+    autocmd FileType vue setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+	autocmd FileType vue call clearmatches() | call matchadd('ColorColumn', '\s\+$', 100) | call matchadd('ColorColumn', '\%81v', 100)
 	" css
-	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-    autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-    autocmd FileType scss setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+    autocmd FileType css setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+    autocmd FileType scss setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 	" html
-	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-    autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+    autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+	autocmd FileType html call clearmatches()
     " php
-	autocmd FileType php call clearmatches() | call matchadd('ErrorMsg', '\s\+$', 100) | call matchadd('ErrorMsg', '\%>120v.\+', 100)
-
+    autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+	autocmd FileType php call clearmatches() | call matchadd('ColorColumn', '\s\+$', 100) | call matchadd('ColorColumn', '\%121v', 100)
+1
 end
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.

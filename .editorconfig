@@ -9,7 +9,7 @@ path=~/.vim/bundle/vim-jsbeautify/plugin/lib/js/lib/beautify.js
 ; Javascript interpreter to be invoked by default 'node'
 bin=node
 charset = utf-8
-indent_style = tab
+indent_style = space
 tab_width = 4
 jslint_happy = true
 end_of_line = lf
@@ -19,7 +19,7 @@ detect_packers = true
 [**.css]
 path=~/.vim/bundle/vim-jsbeautify/plugin/lib/js/lib/beautify-css.js
 charset = utf-8
-indent_style = tab
+indent_style = space
 tab_width = 4
 curly_bracket_next_line = false
 brace_style = collapse
@@ -37,7 +37,7 @@ detect_packers = true
 ;vim:path=~/.vim/bundle/vim-jsbeautify/plugin/lib/js/lib/beautify-html.js
 ;vim:max_char=78
 charset = utf-8
-indent_style = tab
+indent_style = space
 tab_width = 4
 max_preserve_newlines = 3
 end_of_line = lf

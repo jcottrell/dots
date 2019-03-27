@@ -173,10 +173,6 @@ endfunction
 function! ale#job#PrepareCommand(buffer, command) abort
     let l:wrapper = ale#Var(a:buffer, 'command_wrapper')
 
-    let l:command = !empty(l:wrapper)
-    \ ? s:PrepareWrappedCommand(l:wrapper, a:command)
-    \ : a:command
-
     " The command will be executed in a subshell. This fixes a number of
     " issues, including reading the PATH variables correctly, %PATHEXT%
     " expansion on Windows, etc.
@@ -184,6 +180,17 @@ function! ale#job#PrepareCommand(buffer, command) abort
     " NeoVim handles this issue automatically if the command is a String,
     " but we'll do this explicitly, so we use the same exact command for both
     " versions.
+    let l:command = !empty(l:wrapper)
+    \ ? s:PrepareWrappedCommand(l:wrapper, a:command)
+    \ : a:command
+
+    " If a custom shell is specified, use that.
+    if exists('g:ale_shell')
+        let l:shell_arguments = get(g:, 'ale_shell_arguments', &shellcmdflag)
+
+        return split(g:ale_shell) + split(l:shell_arguments) + [l:command]
+    endif
+
     if has('win32')
         return 'cmd /s/c "' . l:command . '"'
     endif
@@ -249,6 +256,11 @@ function! ale#job#Start(command, options) abort
             let l:job_options.exit_cb = function('s:VimExitCallback')
         endif
 
+        " Use non-blocking writes for Vim versions that support the option.
+        if has('patch-8.1.350')
+            let l:job_options.noblock = 1
+        endif
+
         " Vim 8 will read the stdin from the file's buffer.
         let l:job_info.job = job_start(a:command, l:job_options)
         let l:job_id = ale#job#ParseVim8ProcessID(string(l:job_info.job))
@@ -278,11 +290,13 @@ function! ale#job#IsRunning(job_id) abort
         try
             " In NeoVim, if the job isn't running, jobpid() will throw.
             call jobpid(a:job_id)
+
             return 1
         catch
         endtry
     elseif has_key(s:job_map, a:job_id)
         let l:job = s:job_map[a:job_id].job
+
         return job_status(l:job) is# 'run'
     endif
 

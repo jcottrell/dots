@@ -1,7 +1,7 @@
 {
   "editor.wordWrap": "on",
   "editor.formatOnSave": true,
-  "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "editor.renderLineHighlight": "gutter",
   "workbench.editor.closeOnFileDelete": false,
   "workbench.startupEditor": "none",
@@ -43,5 +43,6 @@
     "statusBar.background": "#005f5f",
     "statusBar.noFolderBackground": "#005f5f",
     "statusBar.debuggingBackground": "#005f5f"
-  }
+  },
+  "python.linting.enabled": true
 }
