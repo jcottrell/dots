@@ -48,6 +48,7 @@ colorscheme vividchalk
 " set guifont=Menlo:h15
 " set guifont=Inconsolata:h17 " http://code.google.com/webfonts/specimen/Inconsolata
 " set guifont=Cosmic\ Sans\ Neue\ Mono:h15 " https://github.com/belluzj/cosmic-sans-neue
+" https://github.com/tonsky/FiraCode
 set guifont=Fira\ Code:h15
 
 " Syntax highlighting
