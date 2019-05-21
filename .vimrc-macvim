@@ -139,16 +139,15 @@ set incsearch
 "Highlight searching
 set hlsearch
 
-" Ctrlp.vim - File searcher
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = 'node_modules|DS_Store|git'
+" Fzf.vim
+nnoremap <leader>p :execute 'Files'.FindRootDirectory()<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>
 
-" ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
-" " map <Leader>a :Ack<Space>
+" universal ctags (system, homebrew) and vim-gutentags
+let g:gutentags_cache_dir = '~/tags/'
 
 " case insensitive search
 set ignorecase
@@ -203,7 +202,6 @@ if has("autocmd")
     " php
     autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 	autocmd FileType php call clearmatches() | call matchadd('ColorColumn', '\s\+$', 100) | call matchadd('ColorColumn', '\%121v', 100)
-1
 end
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
@@ -217,8 +215,9 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-"vim-javascript syntax highlighting and "improved" indentation - config
-let g:javascript_plugin_jsdoc = 1
+" vim-rooter plugin: only using the global FindRootDirectory so we don't want
+" it to do anything else
+let g:rooter_manual_only = 1
 
 "Shortcut to fold tags with leader (usually \) + ft
 nnoremap <leader>ft Vatzf
@@ -271,6 +270,7 @@ set wildmenu
 
 "Auto-completion menu
 set wildmode=list:longest
+set rtp+=/usr/local/opt/fzf
 
 " jshint and csslint run with the lint.vim plugin but get annoying so we can
 " disable them here
