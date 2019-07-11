@@ -38,13 +38,22 @@ addLink()
 if [ "$1" = "--server" ] || [ "$1" = "--mac" ]; then
     # if server then connect up .bashrc-server and .vimrc-server
     if [ $1 = "--server" ]; then
+        if [ -f $home/.bashrc ]; then
+            if [ -f $home/.bashrc-old ]; then
+                echo "  .bashrc-old exists so .bashrc will not be deleted."
+            else
+                mv .bashrc .bashrc-old
+            fi
+        fi
         addLink ".bashrc-server" ".bashrc"
         addLink ".vimrc-server" ".vimrc"
+        addLink ".vim-server" ".vim"
         addLink ".bash_aliases"
     else
     # else connect up .bash_profile-maxosx and .vimrc-macvim
         addLink ".bash_profile-macosx" ".bash_profile"
         addLink ".vimrc-macvim" ".vimrc"
+        addLink ".vim"
         #eslint does not follow links
         cp "$dotsDir/.eslint.json" "$HOME/.eslint.json"
     fi
@@ -54,7 +63,6 @@ if [ "$1" = "--server" ] || [ "$1" = "--mac" ]; then
     # addLink ".editorconfig" # ?? for vim-jsbeautify
     addLink ".git_template"
     addLink ".gitconfig"
-    addLink ".vim"
     addLink "bin"
 else
     echo "Please supply either --server or --mac as the first parameter"

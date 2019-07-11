@@ -26,6 +26,18 @@ if [ -d $my_dir/.nvm ]; then
     export NVM_DIR=$my_dir/.nvm
     source $(brew --prefix nvm)/nvm.sh
 fi
+# DrRacket, raco, racket, Pollen, etc.
+if [ -d /Applications/Racket\ v7.3/bin/ ]; then
+    export PATH=/Applications/Racket\ v7.3/bin/:$PATH
+fi
+# Rust (rust-lang.org)
+if [ -d $HOME/.cargo/bin ]; then
+    export PATH=$HOME/.cargo/bin:$PATH
+fi
+# hindent
+if [ -d $HOME/.local/bin ]; then
+    export PATH=$HOME/.local/bin/:$PATH
+fi
 # Is the following needed for the php interactive shell `php -a`?
 #export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
@@ -62,6 +74,9 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES;killall F
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO;killall Finder /System/Library/CoreServices/Finder.app;echo "Now re-hiding hidden files.\n"'
 alias tellme='say Command completed || say Command failed'
 
+# vim and vi should be synonymous
+alias vi='vim'
+
 # Some terminal shotcuts
 alias ll='ls -alh'
 alias la='ls -A'
@@ -79,3 +94,13 @@ alias gl='git log --oneline --decorate --all --graph'
 
 # Make the command line a vi tool
 # set -o vi
+
+###-tns-completion-start-###
+if [ -f /Users/joshuacottrell/.tnsrc ]; then
+    source /Users/joshuacottrell/.tnsrc
+fi
+###-tns-completion-end-###
+export ANDROID_HOME=/usr/local/share/android-sdk
+export JAVA_HOME=/Library/Java/Home
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

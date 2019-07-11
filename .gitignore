@@ -1,3 +1,5 @@
 .DS_Store
 .vim/view/*
 .vim/.netrwhist
+.vim-server/view/*
+.vim-server/.netrwhist

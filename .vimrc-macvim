@@ -133,7 +133,7 @@ set showbreak=↪
 " where | is the cursor and $ is the end of the section you're changing)
 set cpoptions+=$
 
-"Set incremental searching"
+"Set incremental searching
 set incsearch
 
 "Highlight searching
@@ -223,9 +223,10 @@ let g:rooter_manual_only = 1
 nnoremap <leader>ft Vatzf
 
 " PHP Folding plugin - https://github.com/rayburgemeestre/phpfolding.vim
-map <F6> <Esc>:EnableFastPHPFolds<Cr>
-map <F7> <Esc>:EnablePHPFolds<Cr>
-map <F8> <Esc>:DisablePHPFolds<Cr>
+" - keeping for reference and possible later use
+" map <F6> <Esc>:EnableFastPHPFolds<Cr>
+" map <F7> <Esc>:EnablePHPFolds<Cr>
+" map <F8> <Esc>:DisablePHPFolds<Cr>
 
 " UltiSnips and vim-snippets
 let g:snips_author='jcottrell'
