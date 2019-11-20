@@ -54,41 +54,26 @@ if [ -n "$force_color_prompt" ]; then
 fi
 # Add vcprompt (for prompt customs), and usr/local (to head so local files are apps are used first)
 #	folders to PATH
-vcprompt_present=0
 my_dir=$HOME
-if [ -f $my_dir/bin/vcprompt ]; then
-	vcprompt_present=1
-	export PATH=$my_dir/bin:$PATH
-else
-    if [ -f $my_dir/bin/php-cs-fixer.phar ]; then
-        export PATH=$my_dir/bin:$PATH
+vcprompt_present=0
+if [ -f $my_dir/bin/vcprompt ] || [ -f $my_dir/bin/php-cs-fixer.phar ] || [ -f $my_dir/bin/vcprompt ]; then
+    if [ -f $my_dir/bin/vcprompt ]; then
+        vcprompt_present=1
     fi
+	export PATH=$my_dir/bin:$PATH
 fi
-
-# Composer / Laravel, Homestead accessability
-if [ -d ~/.composer/vendor/bin/ ]; then
-    export PATH=~/.composer/vendor/bin/:$PATH
-fi
-
 
 # Prompt customization
-if [ -f ~/.bash_prompt_colors ]; then
-    . ~/.bash_prompt_colors
+if [ -f $my_dir/.bash_prompt_colors ]; then
+    . $my_dir/.bash_prompt_colors
     my_colors=yes
 else
     my_colors=
 fi
+
 # Composer / Laravel accessability
-if [ -d ~/.composer/vendor/bin/ ]; then
-    export PATH=~/.composer/vendor/bin/:$PATH
-fi
-# Add vcprompt (for prompt customs), and usr/local (to head so local files are apps are used first)
-#	folders to PATH
-vcprompt_present=0
-my_dir=`pwd`
-if [ -f $my_dir/bin/vcprompt ]; then
-	vcprompt_present=1
-	export PATH=$my_dir/bin:$PATH
+if [ -d $my_dir/.composer/vendor/bin/ ]; then
+    export PATH=$my_dir/.composer/vendor/bin/:$PATH
 fi
 
 print_before_the_prompt() {

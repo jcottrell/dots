@@ -85,12 +85,14 @@ alias l='ls -CF'
 # git aliases
 alias gs='git status'
 alias gd='git diff'
-alias gc='git commit -m '
+alias gc='git commit'
+alias gcm='git commit -m'
 alias gb='git branch -vv'
 alias gr='git remote -v'
 alias ga='git add'
 alias gaa='git add --all'
 alias gl='git log --oneline --decorate --all --graph'
+alias gsc='git show --name-status'
 
 # Make the command line a vi tool
 # set -o vi
@@ -104,3 +106,6 @@ export ANDROID_HOME=/usr/local/share/android-sdk
 export JAVA_HOME=/Library/Java/Home
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+#macOS wants zsh but I don't have time
+export BASH_SILENCE_DEPRECATION_WARNING=1
