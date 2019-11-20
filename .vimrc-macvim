@@ -58,7 +58,7 @@ let g:ale_php_phpcs_standard = 'PSR2'
 " ALE linter - for javascript eslint needed to `npm install -g eslint
 " eslint-plugin-react` then run `eslint -init` to create an ~/.eslintrc.json
 
-" vim-phpcs (github.com/bpearson/vim-phpcs) based on
+" vim-phpcs plugin (github.com/bpearson/vim-phpcs) based on
 "   (github.com/squizlabs/PHP_CodeSniffer)
 let Vimphpcs_Standard='PSR2'
 nnoremap <leader>cs :CodeSniff<CR>
@@ -72,6 +72,9 @@ let g:php_cs_fixer_enable_default_mapping = 0     " Enable the mapping by defaul
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 1                    " Return the output of command if 1, else an inline information.
 nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
+
+" vim-fugitive plugin
+set  tags^=./.git/tags;
 
 "Tab stuff
 set tabstop=4
