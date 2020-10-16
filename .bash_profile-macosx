@@ -27,8 +27,8 @@ if [ -d $my_dir/.nvm ]; then
     source $(brew --prefix nvm)/nvm.sh
 fi
 # DrRacket, raco, racket, Pollen, etc.
-if [ -d /Applications/Racket\ v7.3/bin/ ]; then
-    export PATH=/Applications/Racket\ v7.3/bin/:$PATH
+if [ -d /Applications/Racket\ v7.8/bin/ ]; then
+    export PATH=/Applications/Racket\ v7.8/bin:$PATH
 fi
 # Rust (rust-lang.org)
 if [ -d $HOME/.cargo/bin ]; then
@@ -36,7 +36,7 @@ if [ -d $HOME/.cargo/bin ]; then
 fi
 # hindent
 if [ -d $HOME/.local/bin ]; then
-    export PATH=$HOME/.local/bin/:$PATH
+    export PATH=$HOME/.local/bin:$PATH
 fi
 # Is the following needed for the php interactive shell `php -a`?
 #export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
@@ -93,6 +93,8 @@ alias ga='git add'
 alias gaa='git add --all'
 alias gl='git log --oneline --decorate --all --graph'
 alias gsc='git show --name-status'
+alias gco='git checkout'
+alias gsu='git submodule update'
 
 # Make the command line a vi tool
 # set -o vi

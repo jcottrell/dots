@@ -26,6 +26,16 @@ filetype indent on
 "Write the old file out when switching between files.
 set autowrite
 
+" iTerm cursor for | or block - https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+let &t_SI = "\<Esc>]50;CursorShape=1\x7" "SI = INSERT mode
+let &t_SR = "\<Esc>]50;CursorShape=2\x7" "SR = REPLACE mode
+let &t_EI = "\<Esc>]50;CursorShape=0\x7" "EI = NORMAL mode (ELSE)
+" https://vim.fandom.com/wiki/Configuring_the_cursor
+"set guicursor=n-v-c:block-Cursor
+"set guicursor+=i:ver100-iCursor
+"set guicursor+=n-v-c:blinkon0
+"set guicursor+=i:blinkwait10
+
 "Display current cursor position in lower right corner.
 set ruler
 
@@ -177,7 +187,7 @@ set spelllang=en_us
 
 if has("autocmd")
 	" Delete whitespace at the end of every line before saving according to a whitelist
-	autocmd BufWritePre *.txt,*.php,*.rb,*.htmlrb,*.html,*.py,*.js :call <SID>StripTrailingWhitespaces()
+	autocmd BufWritePre *.txt,*.php,*.rb,*.htmlrb,*.html,*.py,*.js,*.vue :call <SID>StripTrailingWhitespaces()
 	" Try wrapping text at 72 characters for git commit messages (http://web-design-weekly.com/2013/09/01/a-better-git-commit/)
 	autocmd Filetype gitcommit set spell textwidth=72
 	"Automatically change current directory to that of the file in the buffer

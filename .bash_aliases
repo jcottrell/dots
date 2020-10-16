@@ -12,6 +12,8 @@ alias gr='git remote -v'
 alias ga='git add'
 alias gaa='git add --all'
 alias gl='git log --oneline --decorate --all --graph'
+alias gco='git checkout'
+alias gsu='git submodule update'
 
 # server security update shortcuts
 alias updateServer='sudo apt-get upgrade && sudo apt-get autoremove && sudo reboot'
