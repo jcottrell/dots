@@ -54,8 +54,9 @@ if [ "$1" = "--server" ] || [ "$1" = "--mac" ]; then
         addLink ".bash_profile-macosx" ".bash_profile"
         addLink ".vimrc-macvim" ".vimrc"
         addLink ".vim"
+        addLink ".spacemacs"
         #eslint does not follow links
-        cp "$dotsDir/.eslint.json" "$HOME/.eslint.json"
+        cp "$dotsDir/.eslintrc.json" "$HOME/.eslintrc.json" && echo "Copied .eslintrc.json"
     fi
     addLink ".bash_prompt_colors"
     addLink ".ctags"
