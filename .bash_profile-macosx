@@ -27,12 +27,18 @@ if [ -d $my_dir/.nvm ]; then
     source $(brew --prefix nvm)/nvm.sh
 fi
 # DrRacket, raco, racket, Pollen, etc.
-if [ -d /Applications/Racket\ v7.8/bin/ ]; then
-    export PATH=/Applications/Racket\ v7.8/bin:$PATH
+if [ -d /Applications/Racket\ v7.9/bin/ ]; then
+    export PATH="/Applications/Racket v7.9/bin:$PATH"
 fi
 # Rust (rust-lang.org)
 if [ -d $HOME/.cargo/bin ]; then
     export PATH=$HOME/.cargo/bin:$PATH
+fi
+# Go (golang.org)
+if [ -d $HOME/.go ]; then
+    export GOPATH="${HOME}/.go"
+    export GOROOT="${brew --prefix golang}/libexec"
+    export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 fi
 # hindent
 if [ -d $HOME/.local/bin ]; then
@@ -95,6 +101,9 @@ alias gl='git log --oneline --decorate --all --graph'
 alias gsc='git show --name-status'
 alias gco='git checkout'
 alias gsu='git submodule update'
+
+# Laravel sail
+alias sail='bash vendor/bin/sail'
 
 # Make the command line a vi tool
 # set -o vi
