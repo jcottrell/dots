@@ -33,6 +33,8 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(auto-completion
+     (clojure :variables clojure-backend 'cider
+                  clojure-enable-linters '(clj-kondo joker))
      common-lisp
      csv
      colors
@@ -68,12 +70,12 @@ This function should only modify configuration layer settings."
      sql
      syntax-checking
      themes-megapack
-     treemacs
+     ;treemacs
      typescript
      (unicode-fonts :variables unicode-fonts-force-multi-color-mac t
                                unicode-fonts-enable-ligatures t)
      version-control
-     (vue :variables vue-backend 'lsp)
+     vue
      yaml)
 
    ;; List of additional packages that will be installed without being
@@ -511,7 +513,11 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (global-hl-line-mode -1)
-  (setq flycheck-phpcs-standard "PSR12")
+  (setq flycheck-phpmd-rulesets "phpcs.xml")
+  (setq clojure-enable-fancify-symbols t)
+  (add-to-list 'auto-mode-alist '("\\.blade\\.php'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  ;(setq flycheck-phpcs-standard "PSR12")
   ;(setq flycheck-phpcs-standard "PSR12"
   ;      lsp-enable-file-watchers t
   ;      lsp-file-watch-threshold nil)
