@@ -49,12 +49,18 @@ This function should only modify configuration layer settings."
      haskell
      helm
      html
-     javascript
+     ;javascript
+     (javascript :variables
+                 js2-mode-show-strict-warnings nil
+                 js2-basic-offset 4
+                 javascript-repl `nodejs
+                 node-add-modules-path t)
      json
      lsp
      (markdown :variables markdown-live-preview-engine 'vmd)
      multiple-cursors
      nginx
+     ;(node :variables node-add-modules-path t)
      org
      osx
      php
@@ -85,7 +91,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(vue-mode)
+   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -517,6 +523,12 @@ before packages are loaded."
   (setq clojure-enable-fancify-symbols t)
   (add-to-list 'auto-mode-alist '("\\.blade\\.php'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (setq-default
+   ;; web-mode
+   web-mode-markup-indent-offset 4
+   web-mode-css-indent-offset 4
+   web-mode-code-indent-offset 4
+   web-mode-attr-indent-offset 4)
   ;(setq flycheck-phpcs-standard "PSR12")
   ;(setq flycheck-phpcs-standard "PSR12"
   ;      lsp-enable-file-watchers t
